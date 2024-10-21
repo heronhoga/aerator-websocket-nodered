@@ -1,33 +1,34 @@
 'use client'
 
-import { useState } from 'react';
 import useWebSocket from '@/app/hooks/useWebSocket';
 
 const Home = () => {
     const { messages, sendMessage } = useWebSocket('ws://iot.crustea.id:1880/surabaya/control');
-    const [input, setInput] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        sendMessage(input);
-        setInput('');
+    const handleOpenRelay = () => {
+        sendMessage('open_relay');
+    };
+
+    const handleCloseRelay = () => {
+        sendMessage('close_relay');
     };
 
     return (
-        <div>
-            <h1>Real-time Chat</h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                />
-                <button type="submit">Send</button>
-            </form>
-            <div>
-                {messages.map((msg, index) => (
-                    <div key={index}>{msg}</div>
-                ))}
+        <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+            <h1 className="text-3xl font-bold text-gray-800 mb-6">Aerator Control</h1>
+            <div className="space-x-4 mb-6">
+                <button
+                    onClick={handleOpenRelay}
+                    className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded shadow"
+                >
+                    Open Relay
+                </button>
+                <button
+                    onClick={handleCloseRelay}
+                    className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded shadow"
+                >
+                    Close Relay
+                </button>
             </div>
         </div>
     );
