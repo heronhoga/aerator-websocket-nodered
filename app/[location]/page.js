@@ -26,13 +26,13 @@ const Home = () => {
                     onClick={handleOpenRelay}
                     className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white text-xl sm:text-2xl font-bold py-4 px-8 rounded-lg shadow-lg"
                 >
-                    Open Relay
+                    Aerator ON
                 </button>
                 <button
                     onClick={handleCloseRelay}
                     className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white text-xl sm:text-2xl font-bold py-4 px-8 rounded-lg shadow-lg"
                 >
-                    Close Relay
+                    Aerator OFF
                 </button>
             </div>
         </div>
